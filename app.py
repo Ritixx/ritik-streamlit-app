@@ -152,4 +152,4 @@ if university is not None:
     st.write("University:", selected["name"])
     st.write("Country:", selected["country"])
     st.write("Website:", selected["web_pages"][0])
-st.caption("🟧⬜🟩 Made in India • ❤️ Designed in Punjab")
+st.subheader("🟧⬜🟩 Made in India • ❤️ Designed in Punjab")
