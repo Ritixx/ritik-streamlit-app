@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 st.image("https://cdn-icons-png.flaticon.com/128/563/563169.png", width = 100)
-st.title("Options")
-st.subheader("Made by Ritik in India")
+st.title("After 10th")
+st.subheader("🟧⬜🟩 Made in India • ❤️ Designed in Punjab")
 st.text("Lets see")
 
 bag = st.radio("Pick your stream: ", ["Arts","Science","Commerce"],
@@ -131,24 +131,26 @@ def get_universities():
 
     return response.json()
 
-if st.button("Load Universities"):
 
-    universities = get_universities()
+universities = get_universities()
 
-    names = [uni["name"] for uni in universities]
+names = [uni["name"] for uni in universities]
 
-    university = st.selectbox(
-        "Choose a university:",
-        names,
-        index=None
+university = st.selectbox(
+    "Choose a university:",
+    names,
+    index=None
+)
 
+if university is not None:
+
+    selected = next(
+        uni for uni in universities
+        if uni["name"] == university
     )
-    if university is not None:
-        selected = next(
-            uni for uni in universities
-            if uni["name"] == university
-        )
 
-        st.write("University:", selected["name"])
-        st.write("Country:", selected["country"])
-        st.write("Website:", selected["web_pages"][0])
+    st.success(f"You have chosen {university}")
+
+    st.write("University:", selected["name"])
+    st.write("Country:", selected["country"])
+    st.write("Website:", selected["web_pages"][0])
