@@ -146,10 +146,10 @@ if university is not None:
         uni for uni in universities
         if uni["name"] == university
     )
-st.subheader("🟧⬜🟩 Made in India • ❤️ Designed in Punjab")
 
     st.success(f"You have chosen {university}")
 
     st.write("University:", selected["name"])
     st.write("Country:", selected["country"])
     st.write("Website:", selected["web_pages"][0])
+  st.subheader("🟧⬜🟩 Made in India • ❤️ Designed in Punjab")
