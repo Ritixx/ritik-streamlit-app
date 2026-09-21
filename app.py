@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 st.image("https://cdn-icons-png.flaticon.com/128/563/563169.png", width = 100)
 st.title("After 10th")
-st.subheader("🟧⬜🟩 Made in India • ❤️ Designed in Punjab")
-st.text("Lets see")
 
 bag = st.radio("Pick your stream: ", ["Arts","Science","Commerce"],
                  index=None
@@ -148,6 +146,7 @@ if university is not None:
         uni for uni in universities
         if uni["name"] == university
     )
+st.subheader("🟧⬜🟩 Made in India • ❤️ Designed in Punjab")
 
     st.success(f"You have chosen {university}")
 
