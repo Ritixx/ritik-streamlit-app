@@ -111,7 +111,7 @@ percent = st.select_slider(
 name = st.sidebar.text_input("Enter your name")
 if name:
     st.sidebar.write(f" A Very Warm Welcome, {name}!")
-st.title("Top 15 Choice of India")
+st.subheader("Top 15 Choice of India")
 
 if st.button("Show Data"):
     url ="https://raw.githubusercontent.com/Ritixx/ritik-streamlit-app/c1c0e0a4fdc7f85a4a09d4e89f453221c7a07bc4/top_15_bachelor_degrees_india.csv"
@@ -120,7 +120,7 @@ if st.button("Show Data"):
 import streamlit as st
 import requests
 
-st.title("Indian University Finder")
+st.subheader("Indian University Finder")
 
 @st.cache_data
 def get_universities():
