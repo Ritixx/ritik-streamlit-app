@@ -1,5 +1,6 @@
 import streamlit as st
-
+import pandas as pd
+st.image("https://cdn-icons-png.flaticon.com/128/563/563169.png", width = 100)
 st.title("Options")
 st.subheader("Made by Ritik in India")
 st.text("Lets see")
@@ -107,4 +108,47 @@ percent = st.select_slider(
     options=[60, 70, 80, 90, 100],
     value=None
 )
+name = st.sidebar.text_input("Enter your name")
+if name:
+    st.sidebar.write(f" A Very Warm Welcome, {name}!")
+st.title("Top 15 Choice of India")
 
+if st.button("Show Data"):
+    url ="https://raw.githubusercontent.com/Ritixx/ritik-streamlit-app/c1c0e0a4fdc7f85a4a09d4e89f453221c7a07bc4/top_15_bachelor_degrees_india.csv"
+    df = pd.read_csv(url)
+    st.dataframe(df, hide_index=True)
+import streamlit as st
+import requests
+
+st.title("Indian University Finder")
+
+@st.cache_data
+def get_universities():
+    url = "http://universities.hipolabs.com/search?country=India"
+
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+
+    return response.json()
+
+if st.button("Load Universities"):
+
+    universities = get_universities()
+
+    names = [uni["name"] for uni in universities]
+
+    university = st.selectbox(
+        "Choose a university:",
+        names,
+        index=None
+
+    )
+    if university is not None:
+        selected = next(
+            uni for uni in universities
+            if uni["name"] == university
+        )
+
+        st.write("University:", selected["name"])
+        st.write("Country:", selected["country"])
+        st.write("Website:", selected["web_pages"][0])
